@@ -6,18 +6,23 @@
 
 void *counter(void *x);
 
-int main(){
-   int i=0,c=0;
+int main()
+{
+   int i = 0, c = 0;
    pthread_t th[TH_N];
 
-   for(i=0;i<TH_N;i++) pthread_create(&th[i],NULL,counter,&c);
-   for(i=0;i<TH_N;i++) pthread_join(th[i],NULL);
-   fprintf(stderr,"%d\n",c);
+   for (i = 0; i < TH_N; i++)
+      pthread_create(&th[i], NULL, counter, &c);
+   for (i = 0; i < TH_N; i++)
+      pthread_join(th[i], NULL);
+   fprintf(stderr, "%d\n", c);
    return 0;
 }
-void *counter(void *x){
+void *counter(void *x)
+{
    int i;
-   for(i=0;i<COUNT;i++) {
+   for (i = 0; i < COUNT; i++)
+   {
       (*(int *)x)++;
    }
    return NULL;

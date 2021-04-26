@@ -3,7 +3,7 @@
 
 int main(int argc, char *argv[])
 {
-    DIR *dir; // ディレクトリ構造体のアドレスが入るポインタ変数dirを宣言
+    DIR *dir;                      // ディレクトリ構造体のアドレスが入るポインタ変数dirを宣言
     struct dirent *directoryEntry; // ディレクトリエントリのデータが入るdirent構造体の変数directoryEntryを宣言
 
     dir = opendir(argv[1]); // 指定したパスのディレクトリをオープン

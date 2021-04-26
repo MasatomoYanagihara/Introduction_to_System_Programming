@@ -13,10 +13,10 @@ int main()
    char line[256], command[256], *arg[32];
    while (1)
    {
-      fprintf(stderr, "--> "); // プロンプトを表示
+      fprintf(stderr, "--> ");          // プロンプトを表示
       fgets(line, sizeof(line), stdin); // 入力受付け
-      sscanf(line, "%[^\n]", command); // 入力されたオプション付きのコマンドを配列commandに代入
-      get_arg(command, arg); // 配列command内を" "で区切り、各区切りの先頭アドレスを配列argに代入
+      sscanf(line, "%[^\n]", command);  // 入力されたオプション付きのコマンドを配列commandに代入
+      get_arg(command, arg);            // 配列command内を" "で区切り、各区切りの先頭アドレスを配列argに代入
 
       pid = fork();
       if (pid == 0)

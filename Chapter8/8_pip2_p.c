@@ -4,13 +4,15 @@
 #include <sys/wait.h>
 #include <unistd.h>
 
-int main(){
+int main()
+{
    pid_t pid;
    char line[256], rfd[5], wfd[5], word[256];
    int n, fd[2], st, ret1, ret2;
 
    ret1 = pipe(fd);
-   if( ret1 < 0 ){
+   if (ret1 < 0)
+   {
       perror("pipe");
       exit(1);
    }
@@ -19,19 +21,22 @@ int main(){
 
    fgets(line, sizeof(line), stdin);
    ret1 = sscanf(line, "%s", word);
-   if( ret1 > 0 ){
-      fprintf(stderr,"a\n");
+   if (ret1 > 0)
+   {
+      fprintf(stderr, "a\n");
       pid = fork();
-      if(pid==0){
-         ret2 = execl("pip2_c","pip2_c", rfd, wfd, NULL);
-         if(ret2 < 0){
+      if (pid == 0)
+      {
+         ret2 = execl("pip2_c", "pip2_c", rfd, wfd, NULL);
+         if (ret2 < 0)
+         {
             exit(1);
          }
       }
-      fprintf(stderr,"b\n");
+      fprintf(stderr, "b\n");
       write(fd[1], word, sizeof(word));
       wait(&st);
-      fprintf(stderr,"c\n");
+      fprintf(stderr, "c\n");
 
       read(fd[0], &n, sizeof(n));
       fprintf(stderr, "%s <-> %d \n", word, n);
@@ -45,4 +50,3 @@ int main(){
 apple
 apple <-> 5 
  */
-

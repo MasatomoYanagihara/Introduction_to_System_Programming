@@ -11,7 +11,7 @@ int main()
    int num1, num2, answer, inputAnswer;
    signal(SIGALRM, func); // シグナルハンドラの設定
 
-   srand(time(NULL)); // 乱数の種を生成
+   srand(time(NULL));   // 乱数の種を生成
    num1 = rand() % 100; // ランダムな整数を生成
    num2 = rand() % 100; // ランダムな整数を生成
    answer = num1 + num2;

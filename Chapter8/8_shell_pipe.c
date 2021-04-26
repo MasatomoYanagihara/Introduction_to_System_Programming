@@ -70,7 +70,7 @@ int main()
 
             // 子プロセス生成
             pid = fork();
-            
+
             if (pid == 0)
             {
                close(fd[1]);
